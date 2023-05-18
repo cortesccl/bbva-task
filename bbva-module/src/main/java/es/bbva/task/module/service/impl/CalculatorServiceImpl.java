@@ -8,6 +8,7 @@ import es.bbva.task.module.service.InstrumentService;
 import es.bbva.task.module.service.MarketService;
 import es.bbva.task.module.service.VwapService;
 import es.bbva.task.module.service.dtos.VwapAsFraction;
+import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,7 @@ public class CalculatorServiceImpl implements CalculatorService {
     private MarketService marketService;
 
     @Override
+    @Synchronized
     public String applyMarketUpdate(Long instrumentId, Long marketId, Vwap vwapMarketPrice) {
 
         Instrument instrument = instrumentService.findById(instrumentId);
