@@ -35,6 +35,17 @@ public class CalculatorServiceImpl implements CalculatorService {
 
         Vwap vwap = vwapService.findAllByInstrumentIdAndMarketId(instrumentId, marketId);
 
+        if (vwap == null) {
+            vwap = Vwap.builder()
+                    .instrument(instrument)
+                    .market(market)
+                    .offerPrice(0D)
+                    .offerAmount(0D)
+                    .bidAmount(0D)
+                    .bidPrice(0D)
+                    .build();
+            vwapService.save(vwap);
+        }
         VwapAsFraction vwapAsFraction = VwapAsFraction.builder().build();
 
         vwapAsFraction.initProperties(vwap.getBidAmount(), vwap.getBidPrice(), vwap.getOfferAmount(), vwap.getOfferPrice());

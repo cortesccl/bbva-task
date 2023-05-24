@@ -42,6 +42,7 @@ INSERT INTO instruments (id, version, name) VALUES (18, 0, 'INSTRUMENT18');
 INSERT INTO instruments (id, version, name) VALUES (19, 0, 'INSTRUMENT19');
 INSERT INTO instruments (id, version, name) VALUES (20, 0, 'INSTRUMENT20');
 
+--INSERT INTO vwaps (id, version, bid_price, bid_amount, offer_price,offer_amount, instrument_id, market_id) VALUES(1,0, 0,0,0, 0, 1,1);
 INSERT INTO vwaps (id, version, bid_price, bid_amount, offer_price,offer_amount, instrument_id, market_id) VALUES(2,0, 0,0,0, 0, 1,2);
 INSERT INTO vwaps (id, version, bid_price, bid_amount, offer_price,offer_amount, instrument_id, market_id) VALUES(3,0, 0,0,0, 0, 1,3);
 INSERT INTO vwaps (id, version, bid_price, bid_amount, offer_price,offer_amount, instrument_id, market_id) VALUES(4,0, 0,0,0, 0, 1,4);

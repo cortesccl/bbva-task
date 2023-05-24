@@ -44,12 +44,14 @@ public class MarketUpdateScheduler {
         List<CompletableFuture<String>> futures = new ArrayList<>();
         int marketSize = Long.valueOf(marketService.countAllMarkets()).intValue();
         int instrumentsSize = Long.valueOf(instrumentService.countAllInstruments()).intValue();
-        for (int i = 1; i  < marketSize; i++) {
-                Long marketId = RandomUtilities.createRandomLong(1, 20);
-                Long instrumentId = RandomUtilities.createRandomLong(1, 20);
+        for (int i = 1; i  <= marketSize; i++) {
+            for (int j = 1; j  <= instrumentsSize; j++) {
+                Long marketId = Long.valueOf(Integer.valueOf(i).longValue());
+                Long instrumentId = Long.valueOf(Integer.valueOf(j).longValue());
                 Vwap vwap = RandomUtilities.createRandomVwap();
                 CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> calculatorService.applyMarketUpdate(instrumentId, marketId, vwap));
                 futures.add(future);
+            }
         }
         log.info("\n");
         String result = futures.stream().map(CompletableFuture::join).collect(Collectors.joining("\n"));
